@@ -32,6 +32,8 @@ public class Jumper extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 
 		batch.begin();
+		Display.displayPlatform(world.platform1, batch);
+		Display.displayPlatform(world.platform2, batch);
 		Display.displayPlayer(world.getPlayer(), batch);
 		batch.end();
 

@@ -24,6 +24,8 @@ public class InputHandler implements InputProcessor {
             case Input.Keys.RIGHT:
                 player.setRightMove(true);
                 break;
+            case Input.Keys.UP:
+                player.setJump(true);
         }
         return true;
     }
