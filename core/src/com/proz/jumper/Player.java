@@ -11,6 +11,11 @@ public class Player extends GameObject
     private boolean isRight;
     private boolean isAirborne;
     private boolean isJump;
+
+    private boolean isLeftFaced;
+
+    private float rightTime;
+    private float leftTime;
     private float airTime;
     private float jumpTime;
 
@@ -18,18 +23,25 @@ public class Player extends GameObject
     {
         super(x, y, id, world);
         isAirborne = true;
+
         airTime = 0;
         jumpTime = 0;
+        rightTime = 0;
+        leftTime = 0;
+
+        isLeftFaced = false;
     }
 
     public void updateMotion()
     {
         if (isLeft)
         {
+            leftTime += Gdx.graphics.getDeltaTime();
             x -= 400 * Gdx.graphics.getDeltaTime();
         }
         if (isRight)
         {
+            rightTime += Gdx.graphics.getDeltaTime();
             x += 400 * Gdx.graphics.getDeltaTime();
         }
         if (isAirborne)
@@ -63,12 +75,40 @@ public class Player extends GameObject
     {
         if(isRight && t) isRight = false;
         isLeft = t;
+        if(isLeft){
+            leftTime = 0;
+            isLeftFaced = true;
+        }
     }
 
     public void setRightMove(boolean t)
     {
         if(isLeft && t) isLeft = false;
         isRight = t;
+        if(isRight){
+            rightTime = 0;
+            isLeftFaced = false;
+        }
+    }
+
+    public boolean getRightMove() {
+        return isRight;
+    }
+
+    public boolean getLeftMove(){
+        return isLeft;
+    }
+
+    public float getRightTime(){
+        return rightTime;
+    }
+
+    public float getLeftTime() {
+        return  leftTime;
+    }
+
+    public boolean getLeftFaced() {
+        return isLeftFaced;
     }
 
     public void setJump(boolean t)

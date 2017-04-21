@@ -43,5 +43,6 @@ public class Jumper extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		TextureManager.dispose();
 	}
 }
