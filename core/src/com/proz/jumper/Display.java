@@ -3,6 +3,8 @@ package com.proz.jumper;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+import java.util.LinkedList;
+
 import static com.proz.jumper.TextureManager.*;
 
 /**
@@ -26,7 +28,9 @@ public class Display {
         }
     }
 
-    public static void displayPlatform(Platform platform, SpriteBatch batch){
-        batch.draw(platformRegion, platform.getX(), platform.getY());
+    public static void displayPlatforms(LinkedList<Platform> platforms, SpriteBatch batch){
+        platforms.forEach(item->{
+            batch.draw(platformRegion, item.getX(), item.getY());
+        });
     }
 }
