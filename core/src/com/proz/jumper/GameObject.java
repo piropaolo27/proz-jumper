@@ -25,4 +25,12 @@ public class GameObject {
     public float getY(){
         return this.y;
     }
+
+    public void setX(float x){
+        this.x = x;
+    }
+
+    public void setY(float y){
+        this.y = y;
+    }
 }

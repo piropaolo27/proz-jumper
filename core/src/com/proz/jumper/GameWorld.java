@@ -24,15 +24,23 @@ public class GameWorld {
         for (int i = 0; i < 10; ++i )
         {
             Platform platform = new Platform(rand.nextInt(500),
-                    rand.nextInt(200) + i * 200, i+1,this);
+                    rand.nextInt(100) + i * 200 + 50, i+1,this);
             platforms.add(platform);
         }
     }
 
     public void platformsCollision(){
         platforms.forEach(item->{
-            if (item.getY() - player.getY() <= 70)
+            if (player.getAirborne() && player.getY() - item.getY() > 40 && player.getY() - item.getY() < 70
+                    && player.getX() - item.getX() > -35 && player.getX() - item.getX() < 180){
                 player.setAirborne(false);
+                player.setY(item.getY() + 69);
+            }
+
+            if (!player.getAirborne() && !player.getJump() && player.getY() - item.getY() == 69
+                    && (player.getX() - item.getX() < -35 || player.getX() - item.getX() > 180)){
+                player.setAirborne(true);
+            }
         });
     }
 

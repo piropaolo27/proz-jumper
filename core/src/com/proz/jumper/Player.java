@@ -121,7 +121,14 @@ public class Player extends GameObject
         return isAirborne;
     }
 
-    public void setAirborne(boolean t) {isAirborne = t;}
+    public void setAirborne(boolean t) {
+        isAirborne = t;
+        airTime = 0;
+    }
+
+    public float getAirTime(){
+        return airTime;
+    }
 
     public boolean getJump(){
         return isJump;

@@ -30,6 +30,7 @@ public class Jumper extends ApplicationAdapter {
 
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
+		world.platformsCollision();
 
 		batch.begin();
 		Display.displayPlatforms(world.getPlatforms(), batch);
@@ -37,7 +38,7 @@ public class Jumper extends ApplicationAdapter {
 		batch.end();
 
 		world.getPlayer().updateMotion();
-		world.platformsCollision();
+
 	}
 
 	@Override
