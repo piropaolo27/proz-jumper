@@ -23,7 +23,7 @@ public class GameWorld {
     public void generatePlatforms(){
         for (int i = 0; i < 10; ++i )
         {
-            Platform platform = new Platform(rand.nextInt(500),
+            Platform platform = new Platform(rand.nextInt(390),
                     rand.nextInt(100) + i * 200 + 50, i+1,this);
             platforms.add(platform);
         }

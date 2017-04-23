@@ -47,13 +47,13 @@ public class Player extends GameObject
         if (isAirborne)
         {
             airTime += Gdx.graphics.getDeltaTime();
-            y -= 400 * airTime * airTime * Gdx.graphics.getDeltaTime();
+            y -= 1000 * airTime * Gdx.graphics.getDeltaTime();
         }
         if (isJump)
         {
             jumpTime += Gdx.graphics.getDeltaTime();
-            if ((400 - (400 * jumpTime * jumpTime)) > 0)
-                y += (400 - (400 * jumpTime * jumpTime)) * Gdx.graphics.getDeltaTime();
+            if ((700 - (1000 * jumpTime)) > 0)
+                y += (700 - (1000 * jumpTime)) * Gdx.graphics.getDeltaTime();
             else
             {
                 isJump = false;

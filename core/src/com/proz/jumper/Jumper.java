@@ -28,6 +28,9 @@ public class Jumper extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+		if(world.getPlayer().getJump())
+			camera.translate(0, 1.5f);
+
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		world.platformsCollision();
