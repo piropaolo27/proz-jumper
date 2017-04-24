@@ -1,3 +1,4 @@
+
 package com.proz.jumper.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;

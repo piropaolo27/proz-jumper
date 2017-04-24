@@ -14,7 +14,7 @@ public class GameWorld {
 
     public GameWorld(){
         platforms = new LinkedList<Platform>();
-        player = new Player(150, 600, 0, this);
+        player = new Player(275, 0, 0, this);
         rand = new Random();
 
         generatePlatforms();
