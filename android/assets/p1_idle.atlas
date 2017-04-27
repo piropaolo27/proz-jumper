@@ -1,0 +1,90 @@
+
+p1_idle.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+frame_0_delay-0.1s
+  rotate: false
+  xy: 2, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_10_delay-0.1s
+  rotate: false
+  xy: 84, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_11_delay-0.1s
+  rotate: false
+  xy: 166, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_1_delay-0.1s
+  rotate: false
+  xy: 248, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_2_delay-0.1s
+  rotate: false
+  xy: 330, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_3_delay-0.1s
+  rotate: false
+  xy: 412, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_4_delay-0.1s
+  rotate: false
+  xy: 494, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_5_delay-0.1s
+  rotate: false
+  xy: 576, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_6_delay-0.1s
+  rotate: false
+  xy: 658, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_7_delay-0.1s
+  rotate: false
+  xy: 740, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_8_delay-0.1s
+  rotate: false
+  xy: 822, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
+frame_9_delay-0.1s
+  rotate: false
+  xy: 904, 2
+  size: 80, 133
+  orig: 80, 133
+  offset: 0, 0
+  index: -1
