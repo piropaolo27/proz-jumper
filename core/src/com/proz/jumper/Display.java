@@ -1,5 +1,6 @@
 package com.proz.jumper;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -12,9 +13,13 @@ import static com.proz.jumper.TextureManager.*;
  */
 public class Display {
     public static void displayPlayer(Player player, SpriteBatch batch){
-        if (player.getAirborne() || player.getJump()){
+        if (player.getJump()){
             if(player.getLeftFaced())  batch.draw(playerJumpRegionL, player.getX(), player.getY());
             else    batch.draw(playerJumpRegion, player.getX(), player.getY());
+        }
+        else if(player.getAirborne()){
+            if(player.getLeftFaced())  batch.draw(playerFallRegionL, player.getX(), player.getY());
+            else    batch.draw(playerFallRegion, player.getX(), player.getY());
         }
         else if(player.getRightMove()){
             batch.draw((TextureRegion)animationRight.getKeyFrame(player.getRightTime(), true), player.getX(), player.getY());
@@ -23,14 +28,19 @@ public class Display {
             batch.draw((TextureRegion)animationLeft.getKeyFrame(player.getLeftTime(), true), player.getX(), player.getY());
         }
         else {
-            if(player.getLeftFaced())   batch.draw(playerStandRegionL, player.getX(), player.getY());
-            else    batch.draw(playerStandRegion, player.getX(), player.getY());
+            if(player.getLeftFaced())   batch.draw((TextureRegion)animationStandL.getKeyFrame(player.getLifeTime(), true), player.getX(), player.getY());
+            else    batch.draw((TextureRegion)animationStand.getKeyFrame(player.getLifeTime(), true), player.getX(), player.getY());
         }
     }
 
     public static void displayPlatforms(LinkedList<Platform> platforms, SpriteBatch batch){
-        platforms.forEach(item->{
+        for (Platform item : platforms) {
             batch.draw(platformRegion, item.getX(), item.getY());
-        });
+        }
+    }
+
+    public static void displayBackground(GameCamera camera, SpriteBatch batch){
+        batch.draw(backgroundRegion, camera.position.x - camera.viewportWidth/2,
+                camera.position.y - camera.viewportHeight/2);
     }
 }

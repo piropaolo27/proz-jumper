@@ -19,6 +19,8 @@ public class Player extends GameObject
     private float airTime;
     private float jumpTime;
 
+    private float lifeTime;
+
     public Player(float x, float y, int id, GameWorld world)
     {
         super(x, y, id, world);
@@ -28,6 +30,7 @@ public class Player extends GameObject
         jumpTime = 0;
         rightTime = 0;
         leftTime = 0;
+        lifeTime = 0;
 
         isLeftFaced = false;
     }
@@ -69,6 +72,8 @@ public class Player extends GameObject
             isAirborne = false;
             airTime = 0;
         }
+
+        lifeTime += Gdx.graphics.getDeltaTime();
     }
 
     public void setLeftMove(boolean t)
@@ -107,6 +112,10 @@ public class Player extends GameObject
         return  leftTime;
     }
 
+    public float getAirTime() { return airTime; }
+
+    public float getJumpTime() {return jumpTime;}
+
     public boolean getLeftFaced() {
         return isLeftFaced;
     }
@@ -126,8 +135,8 @@ public class Player extends GameObject
         airTime = 0;
     }
 
-    public float getAirTime(){
-        return airTime;
+    public float getLifeTime(){
+        return lifeTime;
     }
 
     public boolean getJump(){

@@ -1,4 +1,3 @@
-
 package com.proz.jumper.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
@@ -8,9 +7,9 @@ import com.proz.jumper.Jumper;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.title = "Jumper";
-		config.width = 600;
-		config.height = 900;
+		config.title = "Jumpitsu";
+		config.width = 720;
+		config.height = 1280;
 		new LwjglApplication(new Jumper(), config);
 	}
 }

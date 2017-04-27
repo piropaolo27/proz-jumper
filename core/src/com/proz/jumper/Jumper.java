@@ -13,11 +13,11 @@ public class Jumper extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+		TextureManager.load();
 		batch = new SpriteBatch();
 		world = new GameWorld();
 		camera = new GameCamera(world.getPlayer());
-		camera.setToOrtho(false, 600, 900);
-		TextureManager.load();
+		camera.setToOrtho(false, 720, 1280);
 		inputProcessor = new InputHandler(world.getPlayer());
 		Gdx.input.setInputProcessor(inputProcessor);
 	}
@@ -33,6 +33,7 @@ public class Jumper extends ApplicationAdapter {
 		world.platformsCollision();
 
 		batch.begin();
+		Display.displayBackground(camera, batch);
 		Display.displayPlatforms(world.getPlatforms(), batch);
 		Display.displayPlayer(world.getPlayer(), batch);
 		batch.end();
