@@ -1,50 +1,37 @@
 package com.proz.jumper;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
-public class Jumper extends ApplicationAdapter {
-	private SpriteBatch batch;
-	private GameCamera camera;
-	private GameWorld world;
-	private InputHandler inputProcessor;
+public class Jumper extends Game {
+	public SpriteBatch batch;
+	public BitmapFont font;
+	public FreeTypeFontGenerator generator;
+	public FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 
-	@Override
-	public void create () {
+	public void create() {
 		TextureManager.load();
+		generator = new FreeTypeFontGenerator(Gdx.files.internal("manaspc.ttf"));
+		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+
+		parameter.size = 50;
 		batch = new SpriteBatch();
-		world = new GameWorld();
-		camera = new GameCamera(world.getPlayer());
-		camera.setToOrtho(false, 720, 1280);
-		inputProcessor = new InputHandler(world.getPlayer());
-		Gdx.input.setInputProcessor(inputProcessor);
+		//Use LibGDX's default Arial font.
+		font = generator.generateFont(parameter);
+		this.setScreen(new MainScreen(this));
 	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		camera.move();
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
-		world.platformsCollision();
-
-		batch.begin();
-		Display.displayBackground(camera, batch);
-		Display.displayPlatforms(world.getPlatforms(), batch);
-		Display.displayPlayer(world.getPlayer(), batch);
-		batch.end();
-
-		world.getPlayer().updateMotion();
-
+	public void render() {
+		super.render(); //important!
 	}
 
-	@Override
-	public void dispose () {
-		batch.dispose();
+	public void dispose() {
 		TextureManager.dispose();
+		generator.dispose();
+		batch.dispose();
+		font.dispose();
 	}
 }

@@ -1,6 +1,7 @@
 package com.proz.jumper;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -39,7 +40,7 @@ public class Display {
         }
     }
 
-    public static void displayBackground(GameCamera camera, SpriteBatch batch){
+    public static void displayBackground(OrthographicCamera camera, SpriteBatch batch){
         batch.draw(backgroundRegion, camera.position.x - camera.viewportWidth/2,
                 camera.position.y - camera.viewportHeight/2);
     }

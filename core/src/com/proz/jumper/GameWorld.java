@@ -13,18 +13,26 @@ import static com.proz.jumper.TextureManager.*;
 public class GameWorld {
     private LinkedList<Platform> platforms;
     private Player player;
-
+    private GameCamera camera;
     private Random rand;
-    private final static int width = Gdx.graphics.getWidth();
-    private final static int height = Gdx.graphics.getHeight();
+    private int score;
+
+    private static int width;
+    private static int height;
     private final static int playerWidth = playerFallRegion.getRegionWidth();
     private final static int platformWidth = platformRegion.getRegionWidth();
 
 
     public GameWorld(){
         platforms = new LinkedList<Platform>();
-        player = new Player(width/2 - playerWidth/2, 0, 0, this);
+        player = new Player(720/2 - playerWidth/2, 0, 0, this);
+        camera = new GameCamera(getPlayer());
+        camera.setToOrtho(false, 720, 1280);
         rand = new Random();
+        score = 0;
+
+        width = (int)camera.viewportWidth;
+        height = (int)camera.viewportHeight;
 
         generatePlatforms();
     }
@@ -53,11 +61,31 @@ public class GameWorld {
         }
     }
 
+    public boolean isPlayerAlive(){
+        if (player.getY() < camera.position.y - camera.viewportHeight/2) {
+            player.setAlive(false);
+            return false;
+        }
+        return true;
+    }
+
     public Player getPlayer(){
         return player;
     }
 
     public LinkedList<Platform> getPlatforms(){
         return platforms;
+    }
+
+    public GameCamera getCamera() {
+        return camera;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public void setScore(int t){
+        this.score = t;
     }
 }

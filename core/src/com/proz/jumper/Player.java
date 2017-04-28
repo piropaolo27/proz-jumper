@@ -13,6 +13,7 @@ public class Player extends GameObject
     private boolean isJump;
 
     private boolean isLeftFaced;
+    private boolean isAlive;
 
     private float rightTime;
     private float leftTime;
@@ -33,6 +34,7 @@ public class Player extends GameObject
         lifeTime = 0;
 
         isLeftFaced = false;
+        isAlive = true;
     }
 
     public void updateMotion()
@@ -73,6 +75,7 @@ public class Player extends GameObject
             airTime = 0;
         }
 
+        if (y > world.getScore())   world.setScore((int)y);
         lifeTime += Gdx.graphics.getDeltaTime();
     }
 
@@ -141,5 +144,13 @@ public class Player extends GameObject
 
     public boolean getJump(){
         return isJump;
+    }
+
+    public boolean getAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean t){
+        this.isAlive = t;
     }
 }
