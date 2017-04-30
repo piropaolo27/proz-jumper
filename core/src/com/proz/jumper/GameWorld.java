@@ -41,7 +41,7 @@ public class GameWorld {
         for (int i = 0; i < 100; ++i )
         {
             Platform platform = new Platform(rand.nextInt(width - platformWidth),
-                    rand.nextInt(height/20) + i * height/6 + height/18, i+1, this);
+                    rand.nextInt((int)(height * 0.045f)) + i * height/6 + height/18, i+1, this);
             platforms.add(platform);
         }
     }

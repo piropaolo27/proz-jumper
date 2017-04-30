@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.IndexArray;
 
 /**
  * Created by volterra on 28.04.17.
@@ -43,6 +44,8 @@ public class GameScreen implements Screen {
 
         world.getPlayer().updateMotion();
         if (!world.isPlayerAlive()){
+            Integer temp = Integer.valueOf(game.file.readString());
+            if (world.getScore() > temp)    game.file.writeString(Integer.toString(world.getScore()), false);
             game.setScreen(new ScoreScreen(game));
             dispose();
         }
