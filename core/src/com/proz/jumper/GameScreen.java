@@ -3,8 +3,6 @@ package com.proz.jumper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.IndexArray;
 
 /**
  * Created by volterra on 28.04.17.
@@ -32,6 +30,7 @@ public class GameScreen implements Screen {
         world.getCamera().move();
         world.getCamera().update();
         game.batch.setProjectionMatrix(world.getCamera().combined);
+        world.generateMorePlatforms();
         world.platformsCollision();
 
         game.batch.begin();

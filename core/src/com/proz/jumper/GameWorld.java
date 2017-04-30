@@ -1,7 +1,5 @@
 package com.proz.jumper;
 
-import com.badlogic.gdx.Gdx;
-
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -38,12 +36,20 @@ public class GameWorld {
     }
 
     public void generatePlatforms(){
-        for (int i = 0; i < 100; ++i )
+        for (int i = 0; i < 10; ++i )
         {
             Platform platform = new Platform(rand.nextInt(width - platformWidth),
-                    rand.nextInt((int)(height * 0.045f)) + i * height/6 + height/18, i+1, this);
+                    rand.nextInt((int)(height * 0.045f)) + platforms.size() * height/6 + height/18, platforms.size()+1, this);
             platforms.add(platform);
         }
+    }
+
+    public void generateMorePlatforms(){
+        boolean temp = false;
+        for (Platform item : platforms) {
+            if (item.getY() > camera.position.y + camera.viewportHeight/2)    temp = true;
+        }
+        if (!temp) generatePlatforms();
     }
 
     public void platformsCollision(){
@@ -52,6 +58,7 @@ public class GameWorld {
                     && player.getX() - item.getX() > -35 && player.getX() - item.getX() < 180){
                 player.setAirborne(false);
                 player.setY(item.getY() + 69);
+                System.out.println(item.id);
             }
 
             if (!player.getAirborne() && !player.getJump() && player.getY() - item.getY() == 69
