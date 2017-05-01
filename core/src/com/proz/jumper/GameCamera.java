@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
  * Created by volterra on 23.04.17.
+ * I have created this custom Camera class purely for the purpose of
+ * implementing movement method.
  */
 public class GameCamera extends OrthographicCamera {
     Player player;
@@ -12,7 +14,12 @@ public class GameCamera extends OrthographicCamera {
         this.player = player;
     }
 
+    /**
+     * That method is used for the purpose of adjusting difficulty level.
+     * Ie. the further the player progresses through the game the faster
+     * the camera moves.
+     */
     public void move(){
-        if(player.getY() - position.y > -50) translate(0, 3f);
+        if(player.getY() > 500) translate(0, 3f);
     }
 }
