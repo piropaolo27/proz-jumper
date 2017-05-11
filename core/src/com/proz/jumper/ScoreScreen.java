@@ -30,8 +30,7 @@ public class ScoreScreen implements Screen {
 
         game.batch.begin();
         Display.displayBackground(camera, game.batch);
-        game.fontL.draw(game.batch, "HIGH SCORE", camera.viewportWidth * 0.05f, camera.viewportHeight * 0.5f);
-        game.fontL.draw(game.batch, game.file.readString(), camera.viewportWidth * 0.33f, camera.viewportHeight * 0.1f);
+        Display.displayScoreScreenTexts(game.file, camera, game.batch);
         game.batch.end();
 
         if (Gdx.input.isTouched()) {

@@ -31,8 +31,7 @@ public class MainScreen implements Screen {
 
         game.batch.begin();
         Display.displayBackground(camera, game.batch);
-        game.font.draw(game.batch, "Press anywhere", camera.viewportWidth/5.5f, camera.viewportHeight/6);
-        game.font.draw(game.batch, "to play!", camera.viewportWidth/3.5f, camera.viewportHeight/10);
+        Display.displayMainScreenTexts(camera, game.batch);
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
