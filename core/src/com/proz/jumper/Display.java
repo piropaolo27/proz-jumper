@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import static com.proz.jumper.TextureManager.*;
 
 /**
+ * This class is for putting things on the screen.
  * Created by volterra on 15.04.17.
  */
 public class Display {

@@ -5,13 +5,23 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 
 /**
+ * Most important class in the whole project. It serves purpose of managing
+ * all the things connected with the actual gameplay.
  * Created by volterra on 28.04.17.
  */
-
 public class GameScreen implements Screen {
+    /**
+     * Game that is to be used in this screen.
+     */
     final Jumper game;
 
+    /**
+     * World that holds the information about the objects' positions etc.
+     */
     private GameWorld world;
+    /**
+     * Custom inputProcessor handling input of an user.
+     */
     private InputHandler inputProcessor;
 
     public GameScreen (final Jumper game) {
@@ -31,6 +41,7 @@ public class GameScreen implements Screen {
         world.getCamera().update();
         game.batch.setProjectionMatrix(world.getCamera().combined);
         world.generateMorePlatforms();
+        world.platformsUpdate();
         world.platformsCollision();
 
         game.batch.begin();
@@ -50,6 +61,7 @@ public class GameScreen implements Screen {
         }
     }
 
+    //Those methods are compulsory as Screen is an interface.
     @Override
     public void dispose () {
     }

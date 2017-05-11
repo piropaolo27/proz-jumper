@@ -3,9 +3,9 @@ package com.proz.jumper;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
- * Created by volterra on 23.04.17.
  * I have created this custom Camera class purely for the purpose of
  * implementing movement method.
+ * Created by volterra on 23.04.17.
  */
 public class GameCamera extends OrthographicCamera {
     Player player;
@@ -20,6 +20,6 @@ public class GameCamera extends OrthographicCamera {
      * the camera moves.
      */
     public void move(){
-        if(player.getY() > 500) translate(0, 3f);
+        if(player.getY() > 500) translate(0, 2 + player.getLifeTime() * 0.1f);
     }
 }

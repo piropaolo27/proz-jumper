@@ -1,6 +1,7 @@
 package com.proz.jumper;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Random;
 
 import static com.proz.jumper.TextureManager.*;
@@ -14,6 +15,7 @@ public class GameWorld {
     private GameCamera camera;
     private Random rand;
     private int score;
+    private int platformCount;
 
     private static int width;
     private static int height;
@@ -28,6 +30,7 @@ public class GameWorld {
         camera.setToOrtho(false, 720, 1280);
         rand = new Random();
         score = 0;
+        platformCount = 0;
 
         width = (int)camera.viewportWidth;
         height = (int)camera.viewportHeight;
@@ -39,7 +42,7 @@ public class GameWorld {
         for (int i = 0; i < 10; ++i )
         {
             Platform platform = new Platform(rand.nextInt(width - platformWidth),
-                    rand.nextInt((int)(height * 0.045f)) + platforms.size() * height/6 + height/18, platforms.size()+1, this);
+                    rand.nextInt((int)(height * 0.045f)) + platformCount * height/6 + height/18, ++platformCount, this);
             platforms.add(platform);
         }
     }
@@ -65,6 +68,15 @@ public class GameWorld {
                     && (player.getX() - item.getX() < -35 || player.getX() - item.getX() > 180)){
                 player.setAirborne(true);
             }
+        }
+    }
+
+    public void platformsUpdate(){
+        ListIterator<Platform> iterator = platforms.listIterator();
+        while (iterator.hasNext()){
+            Platform plat = iterator.next();
+            if (plat.getY() < camera.position.y - camera.viewportHeight/2 - platformRegion.getRegionHeight())
+                iterator.remove();
         }
     }
 
