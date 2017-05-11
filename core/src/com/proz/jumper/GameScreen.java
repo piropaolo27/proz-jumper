@@ -50,6 +50,8 @@ public class GameScreen implements Screen {
         Display.displayPlayer(world.getPlayer(), game.batch);
         game.font.draw(game.batch, Integer.toString(world.getScore()), world.getCamera().viewportWidth * 0.07f,
                 world.getCamera().viewportHeight * 0.45f + world.getCamera().position.y);
+        game.font.draw(game.batch, Float.toString(world.getPlayer().getLifeTime()), world.getCamera().viewportWidth * 0.77f,
+                world.getCamera().viewportHeight * 0.45f + world.getCamera().position.y);
         game.batch.end();
 
         world.getPlayer().updateMotion();

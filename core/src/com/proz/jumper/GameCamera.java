@@ -1,6 +1,7 @@
 package com.proz.jumper;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import static java.lang.Math.*;
 
 /**
  * I have created this custom Camera class purely for the purpose of
@@ -20,6 +21,6 @@ public class GameCamera extends OrthographicCamera {
      * the camera moves.
      */
     public void move(){
-        if(player.getY() > 500) translate(0, 2 + player.getLifeTime() * 0.1f);
+        if(player.getY() > 500) translate(0, 2 + min(player.getLifeTime(), 40) * 0.1f);
     }
 }

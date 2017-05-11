@@ -16,12 +16,6 @@ public class TextureManager {
     public static TextureAtlas atlasStandL;
     public static Animation animationStandL;
 
-    public static TextureAtlas atlasMidair;
-    public static Animation animationMidair;
-
-    public static TextureAtlas atlasMidairL;
-    public static Animation animationMidairL;
-
     public static TextureRegion playerJumpRegion;
     public static TextureRegion playerJumpRegionL;
 
@@ -45,12 +39,6 @@ public class TextureManager {
 
         atlasStandL = new TextureAtlas(Gdx.files.internal("p1_idleL.atlas"));
         animationStandL = new Animation(1/10f, atlasStandL.getRegions());
-
-        /*atlasMidair = new TextureAtlas(Gdx.files.internal("p1_midair.atlas"));
-        animationMidair = new Animation(1/10f, atlasMidair.getRegions());
-
-        atlasMidairL = new TextureAtlas(Gdx.files.internal("p1_midairL.atlas"));
-        animationMidairL = new Animation(1/10f, atlasMidair.getRegions());*/
 
         playerJumpRegion = new TextureRegion(new Texture(Gdx.files.internal("p1_jump.png")));
         playerJumpRegionL = new TextureRegion(new Texture(Gdx.files.internal("p1_jumpL.png")));

@@ -1,6 +1,7 @@
 package com.proz.jumper;
 
 import com.badlogic.gdx.Gdx;
+import static java.lang.Math.*;
 
 /**
  * Created by volterra on 16.04.17.
@@ -39,26 +40,27 @@ public class Player extends GameObject
 
     public void updateMotion()
     {
+        float time = min(lifeTime, 40);
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
-            x -= 400 * Gdx.graphics.getDeltaTime();
+            x -= (400 + 10 * time) * Gdx.graphics.getDeltaTime();
         }
         if (isRight)
         {
             rightTime += Gdx.graphics.getDeltaTime();
-            x += 400 * Gdx.graphics.getDeltaTime();
+            x += (400 + 10 * time) * Gdx.graphics.getDeltaTime();
         }
         if (isAirborne)
         {
             airTime += Gdx.graphics.getDeltaTime();
-            y -= 1000 * airTime * Gdx.graphics.getDeltaTime();
+            y -= (1000 + 50 * time) * airTime * Gdx.graphics.getDeltaTime();
         }
         if (isJump)
         {
             jumpTime += Gdx.graphics.getDeltaTime();
-            if ((700 - (1000 * jumpTime)) > 0)
-                y += (700 - (1000 * jumpTime)) * Gdx.graphics.getDeltaTime();
+            if (((700 + 15 * time) - ((1000 + 50 * time)  * jumpTime)) > 0)
+                y += ((700 + 15 * time) - ((1000 + 50 * time)  * jumpTime)) * Gdx.graphics.getDeltaTime();
             else
             {
                 isJump = false;
