@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /**
+ * This class holds all the assets used to display images of the player, platforms, etc.
  * Created by volterra on 15.04.17.
  */
 public class TextureManager {
@@ -32,7 +33,9 @@ public class TextureManager {
 
     public static TextureRegion backgroundRegion;
 
-
+    /**
+     * In this method all the previously mentioned variables are initialised.
+     */
     public static void load(){
         atlasStand = new TextureAtlas(Gdx.files.internal("p1_idle.atlas"));
         animationStand = new Animation(1/10f, atlasStand.getRegions());
@@ -58,6 +61,9 @@ public class TextureManager {
         backgroundRegion = new TextureRegion(new Texture(Gdx.files.internal("background.png")));
     }
 
+    /**
+     * This method cleans all the objects that will not be used in future.
+     */
     public static void dispose(){
         atlasStand.dispose();
         atlasStandL.dispose();

@@ -9,8 +9,15 @@ import static java.lang.Math.*;
  * Created by volterra on 23.04.17.
  */
 public class GameCamera extends OrthographicCamera {
+    /**
+     * Player instance is needed for the camera to know how to position itself.
+     */
     Player player;
 
+    /**
+     * Class constructor which gets a player
+     * @param player    Reference for a Player class object
+     */
     public GameCamera(Player player){
         this.player = player;
     }

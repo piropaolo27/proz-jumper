@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import static java.lang.Math.*;
 
 /**
+ * Class that inherits from GameObject class. It stores information about player position,
+ * movement, speed, etc.
  * Created by volterra on 16.04.17.
  */
 public class Player extends GameObject

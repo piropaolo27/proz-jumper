@@ -7,19 +7,57 @@ import java.util.Random;
 import static com.proz.jumper.TextureManager.*;
 
 /**
+ * This class holds information about model of the game, ie. position of objects, score etc.
  * Created by volterra on 16.04.17.
  */
 public class GameWorld {
+    /**
+     * Platforms list.
+     */
     private LinkedList<Platform> platforms;
+
+    /**
+     * Main character of the current game
+     */
     private Player player;
+
+    /**
+     * GameCamera instance used in GameScreen
+     */
     private GameCamera camera;
+
+    /**
+     * Random number generator used for getting new platforms positions
+     */
     private Random rand;
+
+    /**
+     * Current score
+     */
     private int score;
+    /**
+     * Number of already generated platforms
+     */
     private int platformCount;
 
+    /**
+     * Width of display device
+     */
     private static int width;
+
+    /**
+     * Height of a display device
+     */
     private static int height;
+
+    /**
+     * PlayerRegion width
+     */
     private final static int playerWidth = playerFallRegion.getRegionWidth();
+
+    /**
+     * PlayerRegion height
+     */
     private final static int platformWidth = platformRegion.getRegionWidth();
 
 
@@ -38,6 +76,9 @@ public class GameWorld {
         generatePlatforms();
     }
 
+    /**
+     * Method that is used for creating 10 random generated platforms
+     */
     public void generatePlatforms(){
         for (int i = 0; i < 10; ++i )
         {
@@ -47,6 +88,9 @@ public class GameWorld {
         }
     }
 
+    /**
+     * If there are no new platforms above the player, another 10 are generated
+     */
     public void generateMorePlatforms(){
         boolean temp = false;
         for (Platform item : platforms) {
@@ -55,6 +99,11 @@ public class GameWorld {
         if (!temp) generatePlatforms();
     }
 
+    /**
+     * This method checks if player is colliding with any of the platforms. It is divided into two parts:
+     * - first one stops player fall is he is airborne and falling
+     * - second one ensures that player stays standing on a platform and starts falling when go over the ledge
+     */
     public void platformsCollision(){
         for (Platform item : platforms) {
             if (player.getAirborne() && player.getY() - item.getY() > 40 && player.getY() - item.getY() < 70
@@ -71,6 +120,9 @@ public class GameWorld {
         }
     }
 
+    /**
+     * In this case we remove from the list platforms that are no longer on the GameScreen.
+     */
     public void platformsUpdate(){
         ListIterator<Platform> iterator = platforms.listIterator();
         while (iterator.hasNext()){
@@ -80,6 +132,10 @@ public class GameWorld {
         }
     }
 
+    /**
+     * This method checks if player is on the screen.
+     * @return      If player is alive returns true, otherwise false.
+     */
     public boolean isPlayerAlive(){
         if (player.getY() < camera.position.y - camera.viewportHeight/2) {
             player.setAlive(false);

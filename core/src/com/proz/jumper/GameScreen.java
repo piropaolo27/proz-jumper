@@ -24,6 +24,10 @@ public class GameScreen implements Screen {
      */
     private InputHandler inputProcessor;
 
+    /**
+     * GameScren constructor that gets a Game instance when initialised.
+     * @param game  Jumper game that is to be processed in this Gamescreen
+     */
     public GameScreen (final Jumper game) {
         this.game = game;
         world = new GameWorld();
@@ -32,6 +36,12 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(inputProcessor);
     }
 
+    /**
+     * This is the main method of the GameScreen class. It is called with every shown frame.
+     * In this portion of the code are considered all the methods connected with displaying GameObjects,
+     * as well as processing collisions and moving the camera.
+     * @param delta   time between two frames
+     */
     @Override
     public void render (float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -52,6 +62,8 @@ public class GameScreen implements Screen {
         game.batch.end();
 
         world.getPlayer().updateMotion();
+        //this part checks if the player is alive, if not we go to the ScoreScreen
+        //if in this game, player managed to beat current highest score, it is written to a file
         if (!world.isPlayerAlive()){
             Integer temp = Integer.valueOf(game.file.readString());
             if (world.getScore() > temp)    game.file.writeString(Integer.toString(world.getScore()), false);

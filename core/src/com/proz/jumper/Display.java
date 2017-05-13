@@ -39,7 +39,7 @@ public class Display {
     private static DecimalFormat df;
 
     /**
-     * In in this method all the previously mentioned variables are initialized
+     * In in this method all the previously mentioned variables are initialised
      */
     public static void load(){
         generator = new FreeTypeFontGenerator(Gdx.files.internal("manaspc.ttf"));
