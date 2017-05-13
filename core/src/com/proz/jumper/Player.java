@@ -25,6 +25,13 @@ public class Player extends GameObject
 
     private float lifeTime;
 
+    /**
+     * Main constructor for the player, called from superclass.
+     * @param x     horizontal position
+     * @param y     vertical position
+     * @param id    identifier
+     * @param world reference to own world
+     */
     public Player(float x, float y, int id, GameWorld world)
     {
         super(x, y, id, world);
@@ -40,6 +47,11 @@ public class Player extends GameObject
         isAlive = true;
     }
 
+    /**
+     * Method that considers all the states that the player can find himself in, and according
+     * to that makes him move or stay in a correct position. Apart from that score is updated
+     * using highest achieved y position.
+     */
     public void updateMotion()
     {
         float time = min(lifeTime, 40);
@@ -83,6 +95,10 @@ public class Player extends GameObject
         lifeTime += Gdx.graphics.getDeltaTime();
     }
 
+    /**
+     * This methods ensures that player starts or stops moving left depending on the key state.
+     * @param t     If true, starts running left, otherwise stops.
+     */
     public void setLeftMove(boolean t)
     {
         if(isRight && t) isRight = false;
@@ -93,6 +109,10 @@ public class Player extends GameObject
         }
     }
 
+    /**
+     * This methods ensures that player starts or stops moving right depending on the key state.
+     * @param t     If true, starts running right, otherwise stops.
+     */
     public void setRightMove(boolean t)
     {
         if(isLeft && t) isLeft = false;
