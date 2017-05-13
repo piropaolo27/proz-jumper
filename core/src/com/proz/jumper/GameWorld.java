@@ -42,7 +42,7 @@ public class GameWorld {
         for (int i = 0; i < 10; ++i )
         {
             Platform platform = new Platform(rand.nextInt(width - platformWidth),
-                    rand.nextInt((int)(height * 0.05f - 10)) + platformCount * height/6 + height/18, ++platformCount, this);
+                    rand.nextInt((int)(height * 0.05f - 1/128f)) + platformCount * height/6 + height/18, ++platformCount, this);
             platforms.add(platform);
         }
     }

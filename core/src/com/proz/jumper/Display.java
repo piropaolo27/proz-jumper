@@ -18,11 +18,29 @@ import static com.proz.jumper.TextureManager.*;
  * Created by volterra on 15.04.17.
  */
 public class Display {
+    /**
+     * Two font types used for text generating on the screen.
+     */
     private static BitmapFont font, fontL;
+
+    /**
+     * Generator is a tool that makes it possible to transform a TrueTypeFont into a bitmap
+     */
     private static FreeTypeFontGenerator generator;
+
+    /**
+     * This variables are used to attributes of a text, e.g. color, size, boldness
+     */
     private static FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameterL;
+
+    /**
+     * Decimal format makes it possible to truncate a float into a useful on-screen form
+     */
     private static DecimalFormat df;
 
+    /**
+     * In in this method all the previously mentioned variables are initialized
+     */
     public static void load(){
         generator = new FreeTypeFontGenerator(Gdx.files.internal("manaspc.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
@@ -36,6 +54,9 @@ public class Display {
         df = new DecimalFormat("###.##");
     }
 
+    /**
+     * Here is the method that is used to get rid of all the unused objects
+     */
     public static void dispose(){
         font.dispose();
         fontL.dispose();
@@ -83,7 +104,7 @@ public class Display {
     /**
      * This method is used throughout the whole game to display the jungle-themed background.
      * It uses the camera position to put it on the screen in a correct manner.
-     * @param camera    Camera that is going to give us information about the current state of the screen.
+     * @param camera    Camera that is going to give us information about the current state of the screen
      * @param batch     SpriteBatch defined for the whole programme
      */
     public static void displayBackground(OrthographicCamera camera, SpriteBatch batch){
@@ -91,6 +112,11 @@ public class Display {
                 camera.position.y - camera.viewportHeight/2);
     }
 
+    /**
+     * Method that is used to display couple of texts on the GameScreen instance.
+     * @param world     We need to have a reference on a GameWorld we are in since it holds the info about player, score, etc.
+     * @param batch     SpriteBatch defined for the whole programme
+     */
     public static void displayGameScreenTexts(GameWorld world, SpriteBatch batch){
         font.draw(batch, Integer.toString(world.getScore()), world.getCamera().viewportWidth * 0.07f,
                 world.getCamera().viewportHeight * 0.45f + world.getCamera().position.y);
@@ -98,11 +124,22 @@ public class Display {
                 world.getCamera().viewportHeight * 0.45f + world.getCamera().position.y);
     }
 
+    /**
+     * Method that is used to display couple of texts on the ScoreScreen instance.
+     * @param file      File that is used to hold the information about the highest score achieved.
+     * @param camera    Camera size is used to determine where to put the texts.
+     * @param batch     SpriteBatch defined for the whole programme
+     */
     public static void displayScoreScreenTexts(FileHandle file, OrthographicCamera camera, SpriteBatch batch){
         fontL.draw(batch, "HIGH SCORE", camera.viewportWidth * 0.05f, camera.viewportHeight * 0.5f);
         fontL.draw(batch, file.readString(), camera.viewportWidth * 0.33f, camera.viewportHeight * 0.1f);
     }
 
+    /**
+     * Method that is used to display couple of texts on the MainScreen instance.
+     * @param camera    Camera size is used to determine where to put the texts.
+     * @param batch     SpriteBatch defined for the whole programme
+     */
     public static void displayMainScreenTexts(OrthographicCamera camera, SpriteBatch batch){
         font.draw(batch, "Press anywhere", camera.viewportWidth/5.5f, camera.viewportHeight/6);
         font.draw(batch, "to play!", camera.viewportWidth/3.5f, camera.viewportHeight/10);
