@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 
 import static com.proz.jumper.TextureManager.*;
@@ -20,6 +21,7 @@ public class Display {
     private static BitmapFont font, fontL;
     private static FreeTypeFontGenerator generator;
     private static FreeTypeFontGenerator.FreeTypeFontParameter parameter, parameterL;
+    private static DecimalFormat df;
 
     public static void load(){
         generator = new FreeTypeFontGenerator(Gdx.files.internal("manaspc.ttf"));
@@ -30,6 +32,8 @@ public class Display {
         parameterL.size = 100;
         font = generator.generateFont(parameter);
         fontL = generator.generateFont(parameterL);
+
+        df = new DecimalFormat("###.##");
     }
 
     public static void dispose(){
@@ -90,7 +94,7 @@ public class Display {
     public static void displayGameScreenTexts(GameWorld world, SpriteBatch batch){
         font.draw(batch, Integer.toString(world.getScore()), world.getCamera().viewportWidth * 0.07f,
                 world.getCamera().viewportHeight * 0.45f + world.getCamera().position.y);
-        font.draw(batch, Float.toString(world.getPlayer().getLifeTime()), world.getCamera().viewportWidth * 0.77f,
+        font.draw(batch, df.format(world.getPlayer().getLifeTime()), world.getCamera().viewportWidth * 0.73f,
                 world.getCamera().viewportHeight * 0.45f + world.getCamera().position.y);
     }
 
