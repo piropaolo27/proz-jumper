@@ -1,5 +1,6 @@
 package com.proz.jumper;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
@@ -49,11 +50,21 @@ public class InputHandler implements InputProcessor {
     }
 
     public boolean touchDown (int x, int y, int pointer, int button) {
-        return false;
+        if(x > 0 && x < (Gdx.graphics.getWidth()/2f)-1 && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+            player.setLeftMove(true);
+        if(x > Gdx.graphics.getWidth()/2 && x < Gdx.graphics.getWidth() && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+            player.setRightMove(true);
+        if(x > 0 && x < Gdx.graphics.getWidth() && y > Gdx.graphics.getHeight() * (4f/5f) && y < Gdx.graphics.getHeight())
+            player.setJump(true);
+        return true;
     }
 
     public boolean touchUp (int x, int y, int pointer, int button) {
-        return false;
+        if(x > 0 && x < (Gdx.graphics.getWidth()/2f)-1 && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+            player.setLeftMove(false);
+        if(x > Gdx.graphics.getWidth()/2 && x < Gdx.graphics.getWidth() && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+            player.setRightMove(false);
+        return true;
     }
 
     public boolean touchDragged (int x, int y, int pointer) {

@@ -1,48 +1,32 @@
 package com.proz.jumper;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Jumper extends ApplicationAdapter {
-	private SpriteBatch batch;
-	private OrthographicCamera camera;
-	private GameWorld world;
-	private InputHandler inputProcessor;
+public class Jumper extends Game {
+	public FileHandle file;
+	public SpriteBatch batch;
 
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, 600, 900);
+	public void create() {
+		file = Gdx.files.local("save.txt");
+		if (!file.exists()) file.writeString("0", false);
+
 		TextureManager.load();
-		world = new GameWorld();
-		inputProcessor = new InputHandler(world.getPlayer());
-		Gdx.input.setInputProcessor(inputProcessor);
+		Display.load();
+
+		batch = new SpriteBatch();
+		this.setScreen(new MainScreen(this));
 	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
-
-		batch.begin();
-		Display.displayPlatform(world.platform1, batch);
-		Display.displayPlatform(world.platform2, batch);
-		Display.displayPlayer(world.getPlayer(), batch);
-		batch.end();
-
-		world.getPlayer().updateMotion();
+	public void render() {
+		super.render(); //important!
 	}
 
-	@Override
-	public void dispose () {
-		batch.dispose();
+	public void dispose() {
 		TextureManager.dispose();
+		Display.dispose();
+		batch.dispose();
 	}
 }

@@ -1,6 +1,7 @@
 package com.proz.jumper;
 
 import com.badlogic.gdx.Gdx;
+import static java.lang.Math.*;
 
 /**
  * Created by volterra on 16.04.17.
@@ -13,11 +14,14 @@ public class Player extends GameObject
     private boolean isJump;
 
     private boolean isLeftFaced;
+    private boolean isAlive;
 
     private float rightTime;
     private float leftTime;
     private float airTime;
     private float jumpTime;
+
+    private float lifeTime;
 
     public Player(float x, float y, int id, GameWorld world)
     {
@@ -28,32 +32,35 @@ public class Player extends GameObject
         jumpTime = 0;
         rightTime = 0;
         leftTime = 0;
+        lifeTime = 0;
 
         isLeftFaced = false;
+        isAlive = true;
     }
 
     public void updateMotion()
     {
+        float time = min(lifeTime, 40);
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
-            x -= 400 * Gdx.graphics.getDeltaTime();
+            x -= (400 + 10 * time) * Gdx.graphics.getDeltaTime();
         }
         if (isRight)
         {
             rightTime += Gdx.graphics.getDeltaTime();
-            x += 400 * Gdx.graphics.getDeltaTime();
+            x += (400 + 10 * time) * Gdx.graphics.getDeltaTime();
         }
         if (isAirborne)
         {
             airTime += Gdx.graphics.getDeltaTime();
-            y -= 400 * airTime * airTime * Gdx.graphics.getDeltaTime();
+            y -= (1000 + 50 * time) * airTime * Gdx.graphics.getDeltaTime();
         }
         if (isJump)
         {
             jumpTime += Gdx.graphics.getDeltaTime();
-            if ((400 - (400 * jumpTime * jumpTime)) > 0)
-                y += (400 - (400 * jumpTime * jumpTime)) * Gdx.graphics.getDeltaTime();
+            if (((700 + 15 * time) - ((1000 + 50 * time)  * jumpTime)) > 0)
+                y += ((700 + 15 * time) - ((1000 + 50 * time)  * jumpTime)) * Gdx.graphics.getDeltaTime();
             else
             {
                 isJump = false;
@@ -69,6 +76,9 @@ public class Player extends GameObject
             isAirborne = false;
             airTime = 0;
         }
+
+        if (y > world.getScore())   world.setScore((int)y);
+        lifeTime += Gdx.graphics.getDeltaTime();
     }
 
     public void setLeftMove(boolean t)
@@ -107,6 +117,10 @@ public class Player extends GameObject
         return  leftTime;
     }
 
+    public float getAirTime() { return airTime; }
+
+    public float getJumpTime() {return jumpTime;}
+
     public boolean getLeftFaced() {
         return isLeftFaced;
     }
@@ -121,9 +135,24 @@ public class Player extends GameObject
         return isAirborne;
     }
 
-    public void setAirborne(boolean t) {isAirborne = t;}
+    public void setAirborne(boolean t) {
+        isAirborne = t;
+        airTime = 0;
+    }
+
+    public float getLifeTime(){
+        return lifeTime;
+    }
 
     public boolean getJump(){
         return isJump;
+    }
+
+    public boolean getAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean t){
+        this.isAlive = t;
     }
 }

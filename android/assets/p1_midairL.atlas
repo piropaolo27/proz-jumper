@@ -1,0 +1,20 @@
+
+p1_midairL.png
+size: 128,512
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+frame_0_delay-0.1s
+  rotate: false
+  xy: 2, 145
+  size: 84, 141
+  orig: 84, 141
+  offset: 0, 0
+  index: -1
+frame_1_delay-0.1s
+  rotate: false
+  xy: 2, 2
+  size: 84, 141
+  orig: 84, 141
+  offset: 0, 0
+  index: -1

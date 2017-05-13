@@ -1,0 +1,62 @@
+
+p1_left.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+frame_0_delay-0.1s
+  rotate: false
+  xy: 2, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_1_delay-0.1s
+  rotate: false
+  xy: 92, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_2_delay-0.1s
+  rotate: false
+  xy: 182, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_3_delay-0.1s
+  rotate: false
+  xy: 272, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_4_delay-0.1s
+  rotate: false
+  xy: 362, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_5_delay-0.1s
+  rotate: false
+  xy: 452, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_6_delay-0.1s
+  rotate: false
+  xy: 542, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
+frame_7_delay-0.1s
+  rotate: false
+  xy: 632, 2
+  size: 88, 130
+  orig: 88, 130
+  offset: 0, 0
+  index: -1
