@@ -58,7 +58,10 @@ public class GameWorld {
     /**
      * PlayerRegion height
      */
+    private final static int playerHeight = playerFallRegion.getRegionHeight();
     private final static int platformWidth = platformRegion.getRegionWidth();
+    private final static int platformHeight = platformRegion.getRegionHeight();
+    private static int leap;
 
 
     public GameWorld(){
@@ -72,6 +75,7 @@ public class GameWorld {
 
         width = (int)camera.viewportWidth;
         height = (int)camera.viewportHeight;
+        leap = (int)(player.getVelocity0() * player.getVelocity0() / (2 * player.getGravity0()) * 0.97f);
 
         generatePlatforms();
     }
@@ -83,7 +87,7 @@ public class GameWorld {
         for (int i = 0; i < 10; ++i )
         {
             Platform platform = new Platform(rand.nextInt(width - platformWidth),
-                    rand.nextInt((int)(height * 0.05f - 1/50f)) + platformCount * height/6 + height/18, ++platformCount, this);
+                    rand.nextInt(leap/10) + (platformCount + 1) * leap * 0.8f - platformHeight, ++platformCount, this);
             platforms.add(platform);
         }
     }
@@ -111,7 +115,6 @@ public class GameWorld {
                 player.setAirborne(false);
                 player.setY(item.getY() + 69);
                 SoundManager.playFallSound();
-                System.out.println(item.id);
             }
 
             if (!player.getAirborne() && !player.getJump() && player.getY() - item.getY() == 69

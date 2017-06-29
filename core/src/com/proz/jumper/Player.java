@@ -117,7 +117,6 @@ public class Player extends GameObject
         {
             velocityModifier = 15 * time;
             gravityModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
-            System.out.println(velocityModifier + " " + gravityModifier);
             airTime += Gdx.graphics.getDeltaTime();
             y -= (gravity0 + gravityModifier) * airTime * Gdx.graphics.getDeltaTime();
         }
@@ -234,4 +233,13 @@ public class Player extends GameObject
     public void setAlive(boolean t){
         this.isAlive = t;
     }
+
+    public float getVelocity0() {
+        return velocity0;
+    }
+
+    public float getGravity0() {
+        return gravity0;
+    }
+
 }
