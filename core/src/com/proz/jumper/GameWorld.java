@@ -110,6 +110,7 @@ public class GameWorld {
                     && player.getX() - item.getX() > -35 && player.getX() - item.getX() < 180){
                 player.setAirborne(false);
                 player.setY(item.getY() + 69);
+                SoundManager.playFallSound();
                 System.out.println(item.id);
             }
 

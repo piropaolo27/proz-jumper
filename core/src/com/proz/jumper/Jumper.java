@@ -30,6 +30,7 @@ public class Jumper extends Game {
 
 		TextureManager.load();
 		Display.load();
+		SoundManager.load();
 
 		batch = new SpriteBatch();
 		this.setScreen(new MainScreen(this));
@@ -48,6 +49,7 @@ public class Jumper extends Game {
 	public void dispose() {
 		TextureManager.dispose();
 		Display.dispose();
+		SoundManager.dispose();
 		batch.dispose();
 	}
 }

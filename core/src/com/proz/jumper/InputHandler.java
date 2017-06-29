@@ -72,9 +72,9 @@ public class InputHandler implements InputProcessor {
     /**
      * This method processes input on the touchscreen. Depending on which part of the screen has been pressed
      * certain actions are taken:
-     * - left part -> start running left
-     * - right part -> start running right
-     * - lower part -> jump
+     * - left part: start running left
+     * - right part: start running right
+     * - lower part: jump
      * @param x         the horizontal distance of a place that has been pressed
      * @param y         the vertical distance of a place that has been pressed
      * @param pointer   the pointer for the event
@@ -94,8 +94,8 @@ public class InputHandler implements InputProcessor {
     /**
      * This method processes input on the touchscreen. Depending on which part of the screen has been let
      * certain actions are taken:
-     * - left part -> stop running left
-     * - right part -> stop running right
+     * - left part: stop running left
+     * - right part: stop running right
      * @param x         the horizontal distance of a place that has been let
      * @param y         the vertical distance of a place that has been let
      * @param pointer   the pointer for the event

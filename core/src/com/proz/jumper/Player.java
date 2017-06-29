@@ -10,19 +10,58 @@ import static java.lang.Math.*;
  */
 public class Player extends GameObject
 {
+    /**
+     * Boolean value stating if player is moving to the right.
+     */
     private boolean isLeft;
+
+    /**
+     * Boolean value stating if player is moving right.
+     */
     private boolean isRight;
+
+    /**
+     * Boolean value stating if player is falling.
+     */
     private boolean isAirborne;
+    /**
+     * Boolean value stating if player is jumping.
+     */
     private boolean isJump;
 
+    /**
+     * Boolean value stating if player is facing left.
+     */
     private boolean isLeftFaced;
+
+    /**
+     * Boolean value stating if player is alive.
+     */
     private boolean isAlive;
 
+    /**
+     * Time measured from the beginning of movement to the right.
+     */
     private float rightTime;
+
+    /**
+     * Time measured from the beginning of movement to the left.
+     */
     private float leftTime;
+
+    /**
+     * Time measured from the beginning of a fall.
+     */
     private float airTime;
+
+    /**
+     * Time measured from the beginning of a jump.
+     */
     private float jumpTime;
 
+    /**
+     * Lenght of player's life.
+     */
     private float lifeTime;
 
     /**
@@ -149,7 +188,11 @@ public class Player extends GameObject
 
     public void setJump(boolean t)
     {
-        if(!isAirborne) isJump = t;
+        if(!isAirborne && !isJump && t) {
+            isJump = t;
+            SoundManager.playJumpSound();
+        }
+        else if(!t) isJump = t;
     }
 
     public boolean getAirborne()

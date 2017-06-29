@@ -11,26 +11,74 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * Created by volterra on 15.04.17.
  */
 public class TextureManager {
+    /**
+     * Texture batch for standing player.
+     */
     public static TextureAtlas atlasStand;
+
+    /**
+     * Animation for standing player.
+     */
     public static Animation animationStand;
 
+    /**
+     * Texture batch for standing player, facing left.
+     */
     public static TextureAtlas atlasStandL;
+
+    /**
+     * Animation for standing player, facing left.
+     */
     public static Animation animationStandL;
 
+    /**
+     * Texture for jumping player.
+     */
     public static TextureRegion playerJumpRegion;
+
+    /**
+     * Texture for jumping player, facing left.
+     */
     public static TextureRegion playerJumpRegionL;
 
+    /**
+     * Texture for falling player.
+     */
     public static TextureRegion playerFallRegion;
+
+    /**
+     * Texture for falling player, facing left.
+     */
     public static TextureRegion playerFallRegionL;
 
+    /**
+     * Texture batch for player moving right.
+     */
     public static TextureAtlas atlasRight;
+
+    /**
+     * Animation for player moving right.
+     */
     public static Animation animationRight;
 
+    /**
+     * Texture batch for player moving left.
+     */
     public static TextureAtlas atlasLeft;
+
+    /**
+     * Animation for player moving left.
+     */
     public static Animation animationLeft;
 
+    /**
+     * Platform texture.
+     */
     public static TextureRegion platformRegion;
 
+    /**
+     * Background texture.
+     */
     public static TextureRegion backgroundRegion;
 
     /**
