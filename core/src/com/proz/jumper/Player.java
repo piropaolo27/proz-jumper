@@ -63,6 +63,10 @@ public class Player extends GameObject
      * Lenght of player's life.
      */
     private float lifeTime;
+    private float velocity0;
+    private float gravity0;
+    private float velocityModifier;
+    private float grafivtyModifier;
 
     /**
      * Main constructor for the player, called from superclass.
@@ -81,6 +85,11 @@ public class Player extends GameObject
         rightTime = 0;
         leftTime = 0;
         lifeTime = 0;
+
+        velocity0 = 700;
+        gravity0 = 1000;
+        velocityModifier = 0;
+        grafivtyModifier = 0;
 
         isLeftFaced = false;
         isAlive = true;
@@ -106,14 +115,19 @@ public class Player extends GameObject
         }
         if (isAirborne)
         {
+            velocityModifier = 15 * time;
+            grafivtyModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
+            System.out.println(velocityModifier + " " + grafivtyModifier);
             airTime += Gdx.graphics.getDeltaTime();
-            y -= (1000 + 50 * time) * airTime * Gdx.graphics.getDeltaTime();
+            y -= (gravity0 + grafivtyModifier) * airTime * Gdx.graphics.getDeltaTime();
         }
         if (isJump)
         {
+            velocityModifier = 15 * time;
+            grafivtyModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
             jumpTime += Gdx.graphics.getDeltaTime();
-            if (((700 + 15 * time) - ((1000 + 50 * time)  * jumpTime)) > 0)
-                y += ((700 + 15 * time) - ((1000 + 50 * time)  * jumpTime)) * Gdx.graphics.getDeltaTime();
+            if (((velocity0 + velocityModifier) - ((gravity0 + grafivtyModifier)  * jumpTime)) > 0)
+                y += ((velocity0 + velocityModifier) - ((gravity0 + grafivtyModifier)  * jumpTime)) * Gdx.graphics.getDeltaTime();
             else
             {
                 isJump = false;
