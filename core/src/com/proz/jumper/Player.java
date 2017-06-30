@@ -67,6 +67,7 @@ public class Player extends GameObject
     private float gravity0;
     private float velocityModifier;
     private float gravityModifier;
+    private float time;
 
     /**
      * Main constructor for the player, called from superclass.
@@ -102,7 +103,7 @@ public class Player extends GameObject
      */
     public void updateMotion()
     {
-        float time = min(lifeTime, 40);
+        time = min(lifeTime, 70);
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
@@ -134,6 +135,7 @@ public class Player extends GameObject
                 isAirborne = true;
                 airTime = 0;
             }
+            //System.out.println(lifeTime + " " + getCurrentVelocity()/2 + " " + getCurrentVelocity()/2/max(175 - time * 2.5f, 125));
         }
 
         if(y < 0)
@@ -242,4 +244,7 @@ public class Player extends GameObject
         return gravity0;
     }
 
+    public float getCurrentVelocity() {
+        return velocity0 + velocityModifier;
+    }
 }
