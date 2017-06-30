@@ -28,6 +28,6 @@ public class GameCamera extends OrthographicCamera {
      * the camera moves.
      */
     public void move(){
-        if(player.getY() > 500) translate(0, player.getCurrentVelocity()/2/max(175 - player.getLifeTime()*2.5f, 125));
+        if(player.getY() > 500) translate(0, player.getCurrentVelocity()/2/max(175 - player.getLifeTime() * 2.5f, 125));
     }
 }

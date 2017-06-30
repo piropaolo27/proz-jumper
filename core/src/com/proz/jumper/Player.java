@@ -205,6 +205,7 @@ public class Player extends GameObject
         if(!isAirborne && !isJump && t) {
             isJump = t;
             SoundManager.playJumpSound();
+            Gdx.input.vibrate(100);
         }
         else if(!t) isJump = t;
     }
