@@ -2,6 +2,7 @@ package com.proz.jumper;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -48,6 +49,10 @@ public class Display {
 
         parameter.size = 50;
         parameterL.size = 100;
+
+        parameter.color = new Color(229, 229, 229, 1);
+        parameterL.color = new Color(229, 229, 229, 1)
+
         font = generator.generateFont(parameter);
         fontL = generator.generateFont(parameterL);
 

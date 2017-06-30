@@ -67,7 +67,6 @@ public class Player extends GameObject
     private float gravity0;
     private float velocityModifier;
     private float gravityModifier;
-    private float time;
 
     /**
      * Main constructor for the player, called from superclass.
@@ -103,7 +102,7 @@ public class Player extends GameObject
      */
     public void updateMotion()
     {
-        time = min(lifeTime, 70);
+        float time = min(lifeTime, 70);
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
