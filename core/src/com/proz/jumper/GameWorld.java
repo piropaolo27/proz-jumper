@@ -66,7 +66,7 @@ public class GameWorld {
 
     public GameWorld(){
         platforms = new LinkedList<Platform>();
-        player = new Player(720/2 - playerWidth/2, 0, 0, this);
+        player = new Player(720 * 3 / 4 - playerWidth/2, 0, 0, this);
         camera = new GameCamera(getPlayer());
         camera.setToOrtho(false, 720, 1280);
         rand = new Random();

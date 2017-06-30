@@ -82,11 +82,11 @@ public class InputHandler implements InputProcessor {
      * @return          whether the input was processed
      */
     public boolean touchDown (int x, int y, int pointer, int button) {
-        if(x > 0 && x < (Gdx.graphics.getWidth()/2f)-1 && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+        if(x >= 0 && x <= Gdx.graphics.getWidth()/4 && y >= Gdx.graphics.getHeight() * 57/64f && y <= Gdx.graphics.getHeight())
             player.setLeftMove(true);
-        if(x > Gdx.graphics.getWidth()/2 && x < Gdx.graphics.getWidth() && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+        if(x > Gdx.graphics.getWidth()/4 && x <= Gdx.graphics.getWidth()/2 && y >= Gdx.graphics.getHeight() * 57/64f && y <= Gdx.graphics.getHeight())
             player.setRightMove(true);
-        if(x > 0 && x < Gdx.graphics.getWidth() && y > Gdx.graphics.getHeight() * (4f/5f) && y < Gdx.graphics.getHeight())
+        if(x > Gdx.graphics.getWidth()/2 && x <= Gdx.graphics.getWidth())
             player.setJump(true);
         return true;
     }
@@ -103,9 +103,9 @@ public class InputHandler implements InputProcessor {
      * @return          whether the input was processed
      */
     public boolean touchUp (int x, int y, int pointer, int button) {
-        if(x > 0 && x < (Gdx.graphics.getWidth()/2f)-1 && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+        if(x >= 0 && x <= Gdx.graphics.getWidth()/4 && y >= Gdx.graphics.getHeight() * 57/64f && y <= Gdx.graphics.getHeight())
             player.setLeftMove(false);
-        if(x > Gdx.graphics.getWidth()/2 && x < Gdx.graphics.getWidth() && y > 0 && y < Gdx.graphics.getHeight() * (4f/5f)-1)
+        if(x > Gdx.graphics.getWidth()/4 && x <= Gdx.graphics.getWidth()/2 && y >= Gdx.graphics.getHeight() * 57/64f && y <= Gdx.graphics.getHeight())
             player.setRightMove(false);
         return true;
     }

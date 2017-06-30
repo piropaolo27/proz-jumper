@@ -51,7 +51,7 @@ public class Display {
         parameterL.size = 100;
 
         parameter.color = new Color(229, 229, 229, 1);
-        parameterL.color = new Color(229, 229, 229, 1)
+        parameterL.color = new Color(229, 229, 229, 1);
 
         font = generator.generateFont(parameter);
         fontL = generator.generateFont(parameterL);
@@ -148,5 +148,10 @@ public class Display {
     public static void displayMainScreenTexts(OrthographicCamera camera, SpriteBatch batch){
         font.draw(batch, "Press anywhere", camera.viewportWidth/5.5f, camera.viewportHeight/6);
         font.draw(batch, "to play!", camera.viewportWidth/3.5f, camera.viewportHeight/10);
+    }
+
+    public static void displayArrows(OrthographicCamera camera, SpriteBatch batch){
+        batch.draw(arrowsRegion, camera.viewportWidth * 1/36f + camera.position.x - camera.viewportWidth/2,
+                camera.viewportWidth * 1/36f + camera.position.y - camera.viewportHeight/2);
     }
 }
