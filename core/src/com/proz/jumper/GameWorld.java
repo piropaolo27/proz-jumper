@@ -110,15 +110,15 @@ public class GameWorld {
      */
     public void platformsCollision(){
         for (Platform item : platforms) {
-            if (player.getAirborne() && player.getY() - item.getY() > 40 && player.getY() - item.getY() < 70
-                    && player.getX() - item.getX() > -35 && player.getX() - item.getX() < 180){
+            if (player.getAirborne() && player.getY() - item.getY() > platformHeight * 0.7f && player.getY() - item.getY() < platformHeight
+                    && player.getX() - item.getX() > -playerWidth/2f && player.getX() - item.getX() < platformWidth - playerWidth/2f){
                 player.setAirborne(false);
-                player.setY(item.getY() + 69);
+                player.setY(item.getY() + platformHeight * 0.85f);
                 SoundManager.playFallSound();
             }
 
-            if (!player.getAirborne() && !player.getJump() && player.getY() - item.getY() == 69
-                    && (player.getX() - item.getX() < -35 || player.getX() - item.getX() > 180)){
+            if (!player.getAirborne() && !player.getJump() && player.getY() - item.getY() == platformHeight * 0.85f
+                    && (player.getX() - item.getX() <= -playerWidth/2f || player.getX() - item.getX() >= platformWidth - playerWidth/2f)){
                 player.setAirborne(true);
             }
         }
