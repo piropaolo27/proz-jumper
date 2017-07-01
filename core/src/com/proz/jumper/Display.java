@@ -117,6 +117,27 @@ public class Display {
                 camera.position.y - camera.viewportHeight/2);
     }
 
+    public static void displayBackground(Player player, OrthographicCamera camera, SpriteBatch batch) {
+        if ((int) (player.getVelocityStack() / camera.viewportHeight) % 3 == 0) {
+            batch.draw(backgroundRegion1, camera.position.x - camera.viewportWidth / 2,
+                    camera.position.y - camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
+            batch.draw(backgroundRegion2, camera.position.x - camera.viewportWidth / 2,
+                    camera.position.y + camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
+        }
+        else if ((int) (player.getVelocityStack() / camera.viewportHeight) % 3 == 1) {
+            batch.draw(backgroundRegion2, camera.position.x - camera.viewportWidth / 2,
+                    camera.position.y - camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
+            batch.draw(backgroundRegion3, camera.position.x - camera.viewportWidth / 2,
+                    camera.position.y + camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
+        }
+        else if ((int) (player.getVelocityStack() / camera.viewportHeight) % 3 == 2) {
+            batch.draw(backgroundRegion3, camera.position.x - camera.viewportWidth / 2,
+                    camera.position.y - camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
+            batch.draw(backgroundRegion1, camera.position.x - camera.viewportWidth / 2,
+                    camera.position.y + camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
+        }
+    }
+
     /**
      * Method that is used to display couple of texts on the GameScreen instance.
      * @param world     We need to have a reference on a GameWorld we are in since it holds the info about player, score, etc.

@@ -55,7 +55,7 @@ public class GameScreen implements Screen {
         world.platformsCollision();
 
         game.batch.begin();
-        Display.displayBackground(world.getCamera(), game.batch);
+        Display.displayBackground(world.getPlayer(), world.getCamera(), game.batch);
         Display.displayPlatforms(world.getPlatforms(), game.batch);
         Display.displayPlayer(world.getPlayer(), game.batch);
         Display.displayGameScreenTexts(this.world, game.batch);

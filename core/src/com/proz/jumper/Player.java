@@ -67,6 +67,7 @@ public class Player extends GameObject
     private float gravity0;
     private float velocityModifier;
     private float gravityModifier;
+    private float velocityStack;
 
     /**
      * Main constructor for the player, called from superclass.
@@ -90,6 +91,7 @@ public class Player extends GameObject
         gravity0 = 1000;
         velocityModifier = 0;
         gravityModifier = 0;
+        velocityStack = 0;
 
         isLeftFaced = false;
         isAlive = true;
@@ -105,6 +107,7 @@ public class Player extends GameObject
         float time = min(lifeTime, 70);
         velocityModifier = 15 * time;
         gravityModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
+        if (y > 500) velocityStack += getCurrentVelocity() * 0.005f;
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
@@ -244,5 +247,9 @@ public class Player extends GameObject
 
     public float getCurrentVelocity() {
         return velocity0 + velocityModifier;
+    }
+
+    public float getVelocityStack() {
+        return velocityStack;
     }
 }

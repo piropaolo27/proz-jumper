@@ -80,6 +80,10 @@ public class TextureManager {
      * Background texture.
      */
     public static TextureRegion backgroundRegion;
+    public static TextureRegion backgroundRegion1;
+    public static TextureRegion backgroundRegion2;
+    public static TextureRegion backgroundRegion3;
+
     public static TextureRegion arrowsRegion;
     public static TextureRegion arrowsRegionT;
 
@@ -109,6 +113,10 @@ public class TextureManager {
         platformRegion = new TextureRegion(new Texture(Gdx.files.internal("platform.png")));
 
         backgroundRegion = new TextureRegion(new Texture(Gdx.files.internal("background.png")));
+        backgroundRegion1 = new TextureRegion(new Texture(Gdx.files.internal("background1.png")));
+        backgroundRegion2 = new TextureRegion(new Texture(Gdx.files.internal("background2.png")));
+        backgroundRegion3 = new TextureRegion(new Texture(Gdx.files.internal("background3.png")));
+
         arrowsRegion = new TextureRegion(new Texture(Gdx.files.internal("arrows.png")));
         arrowsRegionT = new TextureRegion(new Texture(Gdx.files.internal("arrowsT.png")));
     }
