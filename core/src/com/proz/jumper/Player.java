@@ -103,6 +103,8 @@ public class Player extends GameObject
     public void updateMotion()
     {
         float time = min(lifeTime, 70);
+        velocityModifier = 15 * time;
+        gravityModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
@@ -115,15 +117,11 @@ public class Player extends GameObject
         }
         if (isAirborne)
         {
-            velocityModifier = 15 * time;
-            gravityModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
             airTime += Gdx.graphics.getDeltaTime();
             y -= (gravity0 + gravityModifier) * airTime * Gdx.graphics.getDeltaTime();
         }
         if (isJump)
         {
-            velocityModifier = 15 * time;
-            gravityModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
             jumpTime += Gdx.graphics.getDeltaTime();
             if (((velocity0 + velocityModifier) - ((gravity0 + gravityModifier)  * jumpTime)) > 0)
                 y += ((velocity0 + velocityModifier) - ((gravity0 + gravityModifier)  * jumpTime)) * Gdx.graphics.getDeltaTime();
