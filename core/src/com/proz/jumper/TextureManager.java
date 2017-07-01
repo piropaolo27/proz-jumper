@@ -81,6 +81,7 @@ public class TextureManager {
      */
     public static TextureRegion backgroundRegion;
     public static TextureRegion arrowsRegion;
+    public static TextureRegion arrowsRegionT;
 
     /**
      * In this method all the previously mentioned variables are initialised.
@@ -109,6 +110,7 @@ public class TextureManager {
 
         backgroundRegion = new TextureRegion(new Texture(Gdx.files.internal("background.png")));
         arrowsRegion = new TextureRegion(new Texture(Gdx.files.internal("arrows.png")));
+        arrowsRegionT = new TextureRegion(new Texture(Gdx.files.internal("arrowsT.png")));
     }
 
     /**

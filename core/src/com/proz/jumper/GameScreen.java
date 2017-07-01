@@ -59,7 +59,7 @@ public class GameScreen implements Screen {
         Display.displayPlatforms(world.getPlatforms(), game.batch);
         Display.displayPlayer(world.getPlayer(), game.batch);
         Display.displayGameScreenTexts(this.world, game.batch);
-        Display.displayArrows(world.getCamera(), game.batch);
+        Display.displayArrows(world.getPlayer(), world.getCamera(), game.batch);
         game.batch.end();
 
         world.getPlayer().updateMotion();

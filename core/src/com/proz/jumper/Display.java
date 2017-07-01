@@ -150,8 +150,15 @@ public class Display {
         font.draw(batch, "to play!", camera.viewportWidth/3.5f, camera.viewportHeight/10);
     }
 
-    public static void displayArrows(OrthographicCamera camera, SpriteBatch batch){
-        batch.draw(arrowsRegion, camera.viewportWidth * 1/36f + camera.position.x - camera.viewportWidth/2,
-                camera.viewportWidth * 1/36f + camera.position.y - camera.viewportHeight/2);
+    public static void displayArrows(Player player, OrthographicCamera camera, SpriteBatch batch) {
+        if (player.getX() - camera.position.x < camera.viewportWidth * -1/36f &&
+                player.getY() - camera.position.y < camera.viewportHeight * -13/32f) {
+            batch.draw(arrowsRegionT, camera.viewportWidth * 1 / 36f + camera.position.x - camera.viewportWidth / 2,
+                    camera.viewportWidth * 1 / 36f + camera.position.y - camera.viewportHeight / 2);
+        }
+        else {
+            batch.draw(arrowsRegion, camera.viewportWidth * 1 / 36f + camera.position.x - camera.viewportWidth / 2,
+                    camera.viewportWidth * 1 / 36f + camera.position.y - camera.viewportHeight / 2);
+        }
     }
 }
