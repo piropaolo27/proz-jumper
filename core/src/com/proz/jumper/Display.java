@@ -117,25 +117,11 @@ public class Display {
                 camera.position.y - camera.viewportHeight/2);
     }
 
-    public static void displayBackground(Player player, OrthographicCamera camera, SpriteBatch batch) {
-        if ((int) (player.getVelocityStack() / camera.viewportHeight) % 3 == 0) {
-            batch.draw(backgroundRegion1, camera.position.x - camera.viewportWidth / 2,
-                    camera.position.y - camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
-            batch.draw(backgroundRegion2, camera.position.x - camera.viewportWidth / 2,
-                    camera.position.y + camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
-        }
-        else if ((int) (player.getVelocityStack() / camera.viewportHeight) % 3 == 1) {
-            batch.draw(backgroundRegion2, camera.position.x - camera.viewportWidth / 2,
-                    camera.position.y - camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
-            batch.draw(backgroundRegion3, camera.position.x - camera.viewportWidth / 2,
-                    camera.position.y + camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
-        }
-        else if ((int) (player.getVelocityStack() / camera.viewportHeight) % 3 == 2) {
-            batch.draw(backgroundRegion3, camera.position.x - camera.viewportWidth / 2,
-                    camera.position.y - camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
-            batch.draw(backgroundRegion1, camera.position.x - camera.viewportWidth / 2,
-                    camera.position.y + camera.viewportHeight / 2 - player.getVelocityStack() % camera.viewportHeight);
-        }
+    public static void displayBackground(GameWorld world, SpriteBatch batch) {
+        batch.draw(world.getBackgroundA(), world.getCamera().position.x - world.getCamera().viewportWidth / 2,
+                world.getCamera().position.y - world.getCamera().viewportHeight / 2 - world.getPlayer().getVelocityStack() % world.getCamera().viewportHeight);
+        batch.draw(world.getBackgroundB(), world.getCamera().position.x - world.getCamera().viewportWidth / 2,
+                world.getCamera().position.y + world.getCamera().viewportHeight / 2 - world.getPlayer().getVelocityStack() % world.getCamera().viewportHeight);
     }
 
     /**

@@ -1,5 +1,7 @@
 package com.proz.jumper;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Random;
@@ -62,7 +64,9 @@ public class GameWorld {
     private final static int platformWidth = platformRegion.getRegionWidth();
     private final static int platformHeight = platformRegion.getRegionHeight();
     private static int leap;
-
+    private TextureRegion backgroundA;
+    private TextureRegion backgroundB;
+    private int backgroundCounter;
 
     public GameWorld(){
         platforms = new LinkedList<Platform>();
@@ -76,6 +80,8 @@ public class GameWorld {
         width = (int)camera.viewportWidth;
         height = (int)camera.viewportHeight;
         leap = (int)(player.getVelocity0() * player.getVelocity0() / (2 * player.getGravity0()) * 0.97f);
+        initialiseBackground();
+        backgroundCounter = 0;
 
         generatePlatforms();
     }
@@ -148,6 +154,39 @@ public class GameWorld {
         return true;
     }
 
+    public void initialiseBackground(){
+        backgroundA = backgroundRegion;
+        switch (rand.nextInt(3) + 1){
+            case 1:
+                backgroundB = backgroundRegion1;
+                break;
+            case 2:
+                backgroundB = backgroundRegion2;
+                break;
+            case 3:
+                backgroundB = backgroundRegion3;
+                break;
+        }
+    }
+
+    public void updateBackground(){
+        if (player.getVelocityStack() >= camera.viewportHeight * (1 + backgroundCounter)) {
+            ++backgroundCounter;
+            backgroundA = backgroundB;
+            switch (rand.nextInt(3) + 1) {
+                case 1:
+                    backgroundB = backgroundRegion1;
+                    break;
+                case 2:
+                    backgroundB = backgroundRegion2;
+                    break;
+                case 3:
+                    backgroundB = backgroundRegion3;
+                    break;
+            }
+        }
+    }
+
     public Player getPlayer(){
         return player;
     }
@@ -166,5 +205,13 @@ public class GameWorld {
 
     public void setScore(int t){
         this.score = t;
+    }
+
+    public TextureRegion getBackgroundA() {
+        return backgroundA;
+    }
+
+    public TextureRegion getBackgroundB() {
+        return backgroundB;
     }
 }
