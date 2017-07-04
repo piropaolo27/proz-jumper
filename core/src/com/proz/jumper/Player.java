@@ -107,7 +107,7 @@ public class Player extends GameObject
         float time = min(lifeTime, 70);
         velocityModifier = 15 * time;
         gravityModifier = velocityModifier * gravity0 * (velocityModifier + 2 * velocity0) / (velocity0 * velocity0);
-        if (y > 500) velocityStack += getCurrentVelocity() * 0.005f;
+        if (y > 500) velocityStack += getCurrentVelocity() * 0.0005f;
         if (isLeft)
         {
             leftTime += Gdx.graphics.getDeltaTime();
