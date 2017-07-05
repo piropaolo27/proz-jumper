@@ -48,16 +48,18 @@ public class ScoreScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        Display.displayBackground(camera, game.batch);
+        Display.displayScoreBackground(camera, game.batch);
         Display.displayScoreScreenTexts(game.file, camera, game.batch);
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
-            if(Gdx.input.getX() < 300 && Gdx.input.getY() < 300){
+            if(Gdx.input.getX() > Gdx.graphics.getWidth() * 71/90f
+                    && Gdx.input.getY() > Gdx.graphics.getHeight() * 143/160f){
                 game.setScreen(new CreditsScreen(game));
                 dispose();
             }
-            else {
+            else if (Gdx.input.getX() < Gdx.graphics.getWidth() * 19/90f
+                    && Gdx.input.getY() > Gdx.graphics.getHeight() * 143/160f){
                 game.setScreen(new GameScreen(game));
                 dispose();
             }

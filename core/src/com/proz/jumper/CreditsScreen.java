@@ -3,6 +3,7 @@ package com.proz.jumper;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -30,10 +31,11 @@ public class CreditsScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        Display.displayBackground(camera, game.batch);
+        Display.displayCreditsBackground(camera, game.batch);
         game.batch.end();
 
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() && Gdx.input.getX() < Gdx.graphics.getWidth() * 19/90f
+                && Gdx.input.getY() > Gdx.graphics.getHeight() * 143/160f) {
             game.setScreen(new ScoreScreen(game));
             dispose();
         }

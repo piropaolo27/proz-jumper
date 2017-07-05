@@ -48,11 +48,12 @@ public class MainScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        Display.displayBackground(camera, game.batch);
-        Display.displayMainScreenTexts(camera, game.batch);
+        Display.displayMainBackground(camera, game.batch);
+        //Display.displayMainScreenTexts(camera, game.batch);
         game.batch.end();
 
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() && Gdx.input.getX() > Gdx.graphics.getWidth() * 7/18f && Gdx.input.getX() < Gdx.graphics.getWidth() * 11/18f
+                && Gdx.input.getY() > Gdx.graphics.getHeight() * 29/64f && Gdx.input.getY() < Gdx.graphics.getHeight() * 37/64f) {
             game.setScreen(new GameScreen(game));
             dispose();
         }

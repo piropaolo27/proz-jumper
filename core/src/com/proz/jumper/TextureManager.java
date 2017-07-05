@@ -87,6 +87,11 @@ public class TextureManager {
     public static TextureRegion arrowsRegion;
     public static TextureRegion arrowsRegionT;
 
+    public static TextureRegion titleRegion;
+    public static TextureRegion mainRegion;
+    public static TextureRegion scoreRegion;
+    public static TextureRegion creditsRegion;
+
     /**
      * In this method all the previously mentioned variables are initialised.
      */
@@ -119,6 +124,11 @@ public class TextureManager {
 
         arrowsRegion = new TextureRegion(new Texture(Gdx.files.internal("arrows.png")));
         arrowsRegionT = new TextureRegion(new Texture(Gdx.files.internal("arrowsT.png")));
+
+        titleRegion = new TextureRegion(new Texture(Gdx.files.internal("title_screen.png")));
+        mainRegion = new TextureRegion(new Texture(Gdx.files.internal("main_screen.png")));
+        scoreRegion = new TextureRegion(new Texture(Gdx.files.internal("score_screen.png")));
+        creditsRegion = new TextureRegion(new Texture(Gdx.files.internal("credits_screen.png")));
     }
 
     /**

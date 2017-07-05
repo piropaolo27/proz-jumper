@@ -124,6 +124,27 @@ public class Display {
                 world.getCamera().position.y + world.getCamera().viewportHeight / 2 - world.getPlayer().getVelocityStack() % world.getCamera().viewportHeight);
     }
 
+    public static void displayTitleBackground(OrthographicCamera camera, SpriteBatch batch){
+        batch.draw(titleRegion, camera.position.x - camera.viewportWidth/2,
+                camera.position.y - camera.viewportHeight/2);
+    }
+
+    public static void displayMainBackground(OrthographicCamera camera, SpriteBatch batch){
+        batch.draw(mainRegion, camera.position.x - camera.viewportWidth/2,
+                camera.position.y - camera.viewportHeight/2);
+    }
+
+    public static void displayScoreBackground(OrthographicCamera camera, SpriteBatch batch){
+        batch.draw(scoreRegion, camera.position.x - camera.viewportWidth/2,
+                camera.position.y - camera.viewportHeight/2);
+    }
+
+    public static void displayCreditsBackground(OrthographicCamera camera, SpriteBatch batch){
+        batch.draw(creditsRegion, camera.position.x - camera.viewportWidth/2,
+                camera.position.y - camera.viewportHeight/2);
+    }
+
+
     /**
      * Method that is used to display couple of texts on the GameScreen instance.
      * @param world     We need to have a reference on a GameWorld we are in since it holds the info about player, score, etc.
