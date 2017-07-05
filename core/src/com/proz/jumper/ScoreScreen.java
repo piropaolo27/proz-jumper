@@ -5,7 +5,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.IndexArray;
 
 /**
  * Classed displayed after player loses the game; contains information about the highest score
@@ -53,9 +52,15 @@ public class ScoreScreen implements Screen {
         Display.displayScoreScreenTexts(game.file, camera, game.batch);
         game.batch.end();
 
-        if (Gdx.input.isTouched() || Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            game.setScreen(new GameScreen(game));
-            dispose();
+        if (Gdx.input.isTouched()) {
+            if(Gdx.input.getX() < 300 && Gdx.input.getY() < 300){
+                game.setScreen(new CreditsScreen(game));
+                dispose();
+            }
+            else {
+                game.setScreen(new GameScreen(game));
+                dispose();
+            }
         }
     }
 

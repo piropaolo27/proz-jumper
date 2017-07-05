@@ -7,38 +7,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
- * Class that is displayed at the very beginning, before starting the game. Touching the screen or
- * pressing space key starts the game.
- * Created by volterra on 28.04.17.
+ * Created by volterra on 04.07.17.
  */
 
-public class MainScreen implements Screen {
-    /**
-     * Game pased onto the MainScreen.
-     */
+public class CreditsScreen implements Screen {
     final Jumper game;
-
-    /**
-     * Camera used to show all the things in this screen.
-     */
     OrthographicCamera camera;
 
-    /**
-     * Constructor that gets a Jumper game instance.
-     * @param game  reference to a game that is to be processed
-     */
-    public MainScreen(final Jumper game){
+    public CreditsScreen(final Jumper game) {
         this.game = game;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 720, 1280);
     }
 
-    /**
-     * This is the main method of the MainScreen class. It is called with every shown frame.
-     * In this portion of the code are considered all the methods connected with displaying scores, texts.
-     * @param delta   time between two frames
-     */
     @Override
     public void render(float delta){
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -49,11 +31,10 @@ public class MainScreen implements Screen {
 
         game.batch.begin();
         Display.displayBackground(camera, game.batch);
-        Display.displayMainScreenTexts(camera, game.batch);
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
-            game.setScreen(new GameScreen(game));
+            game.setScreen(new ScoreScreen(game));
             dispose();
         }
     }

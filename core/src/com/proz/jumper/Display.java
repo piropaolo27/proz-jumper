@@ -43,12 +43,12 @@ public class Display {
      * In in this method all the previously mentioned variables are initialised
      */
     public static void load(){
-        generator = new FreeTypeFontGenerator(Gdx.files.internal("manaspc.ttf"));
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("chary.ttf"));
         parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameterL = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
-        parameter.size = 50;
-        parameterL.size = 100;
+        parameter.size = 80;
+        parameterL.size = 160;
 
         parameter.color = new Color(229, 229, 229, 1);
         parameterL.color = new Color(229, 229, 229, 1);
