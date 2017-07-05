@@ -52,7 +52,7 @@ public class ScoreScreen implements Screen {
         Display.displayScoreScreenTexts(game.file, camera, game.batch);
         game.batch.end();
 
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.justTouched()) {
             if(Gdx.input.getX() > Gdx.graphics.getWidth() * 71/90f
                     && Gdx.input.getY() > Gdx.graphics.getHeight() * 143/160f){
                 game.setScreen(new CreditsScreen(game));

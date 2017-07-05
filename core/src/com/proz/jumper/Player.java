@@ -144,6 +144,8 @@ public class Player extends GameObject
             isAirborne = false;
             airTime = 0;
         }
+        if(x < 0) x = 0;
+        if(x > 640) x = 640;
 
         if (y > world.getScore())   world.setScore((int)y);
         lifeTime += Gdx.graphics.getDeltaTime();

@@ -1,21 +1,19 @@
 package com.proz.jumper;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
- * Created by volterra on 04.07.17.
+ * Created by volterra on 05.07.17.
  */
 
-public class CreditsScreen implements Screen {
+public class TitleScreen implements Screen {
     final Jumper game;
     OrthographicCamera camera;
 
-    public CreditsScreen(final Jumper game) {
+    public TitleScreen(final Jumper game){
         this.game = game;
 
         camera = new OrthographicCamera();
@@ -31,12 +29,11 @@ public class CreditsScreen implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        Display.displayCreditsBackground(camera, game.batch);
+        Display.displayTitleBackground(camera, game.batch);
         game.batch.end();
 
-        if (Gdx.input.justTouched() && Gdx.input.getX() < Gdx.graphics.getWidth() * 19/90f
-                && Gdx.input.getY() > Gdx.graphics.getHeight() * 143/160f) {
-            game.setScreen(new ScoreScreen(game));
+        if (Gdx.input.justTouched()) {
+            game.setScreen(new MainScreen(game));
             dispose();
         }
     }

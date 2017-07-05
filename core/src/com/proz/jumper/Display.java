@@ -165,7 +165,7 @@ public class Display {
      */
     public static void displayScoreScreenTexts(FileHandle file, OrthographicCamera camera, SpriteBatch batch){
         fontL.draw(batch, "HIGH SCORE", camera.viewportWidth * 0.05f, camera.viewportHeight * 0.5f);
-        fontL.draw(batch, file.readString(), camera.viewportWidth * 0.33f, camera.viewportHeight * 0.1f);
+        fontL.draw(batch, file.readString(), camera.viewportWidth * 0.33f, camera.viewportHeight * 0.3f);
     }
 
     /**

@@ -33,7 +33,7 @@ public class Jumper extends Game {
 		SoundManager.load();
 
 		batch = new SpriteBatch();
-		this.setScreen(new MainScreen(this));
+		this.setScreen(new TitleScreen(this));
 	}
 
 	/**
