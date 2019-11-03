@@ -1,4 +1,4 @@
-# PROZ_Jumper
+# proz-jumper
 
 This game is currently being made by me as assigment for Java classes at Warsaw University of Technology.
 It somehow resembles classic Icy Tower game. It is not finished yet, and I am doing my best to polish this game,
